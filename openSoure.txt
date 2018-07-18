@@ -1,0 +1,1253 @@
+单元格内换行<br style='mso-data-placement:same-cell;'/>
+强制以字符显示 style="vnd.ms-excel.numberformat:@"
+ border-collapse:collapse; table合并边框
+
+http://www.manning.com/bibeault/
+http://121.15.134.94:9898/KDHRMS/Default.aspx
+{@ if is_array($order)&& count($order)!=0@} smarty判断是否是数组
+			header( "Pragma: public" );
+			header( "Expires: 0" );
+			header("Accept-Ranges: bytes");
+			header("Content-Disposition: attachment; filename={$interfaceType}.csv");
+			header("Content-Type:APPLICATION/OCTET-STREAM;charset=gb2312");
+
+    ob_clean();
+     ob_flush();//清空输出内容
+border-collapse:collapse;合并边框粗洗
+.print_pdfcff{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg); 
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);} 旋转样式
+array_product
+ALTER TABLE orders CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------
+ phpexcel单元格内换行
+------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------
+我说的这个换行不是字多了，自动换行的那种，是在特定位置添加换行符
+
+代码如下：
+$objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('A4', “Hello\nWorld”)；
+
+ 然后注意两点
+
+一是要有下面的代码配合
+$objPHPExcel->getActiveSheet()->getStyle('A4')->getAlignment()->setWrapText(true);
+
+ 二是要换行的字符串Hello\nWorld外面必须是双引号
+//设置excel以字符串形式显示
+$activeSheet->setCellValueExplicit("D".$i,$row['lz_zip'],PHPExcel_Cell_DataType::TYPE_STRING);
+$activeSheet->getStyle('D'.$i)->getNumberFormat()->setFormatCode("@");
+------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------
+pcntl_fork
+-------------------------------------------------------------------------------------------------
+-webkit-text-size-adjust:none; 
+------------------------------------------------------------------------------------------------
+下载解决带空格乱码问题，
+$fileName=urlencode($fileName);
+            $filename=str_replace('+','%20',$fileName);
+            $explerType=$_SERVER['HTTP_USER_AGENT'];
+            if(preg_match("/MSIE/", $explerType)) {
+                $headerStr='Content-Disposition: attachment; filename="' . $filename . '"';
+            } else if (preg_match("/Firefox/", $explerType)) {
+                $headerStr='Content-Disposition: attachment; filename*="utf8\'\'' . $filename . '"';
+            } else {
+               $headerStr='Content-Disposition: attachment; filename="' . $filename . '"';
+            }
+            header( "Pragma: public" );
+            header( "Expires: 0" );
+            header("Accept-Ranges: bytes");
+            header($headerStr);
+            header("Content-Type:APPLICATION/OCTET-STREAM;charset=gb2312");
+
+-------------------------------------------------
+mysql 中文排序
+select name from test1 order by convert(name using gb2312) asc;
+再gbk字符集中，中文是按拼音排序的
+--------------------------------------------------------------
+pdo详细
+---------------------------------------------------------------------------------
+PDO是一个“数据库访问抽象层”，作用是统一各种数据库的访问接口，与mysql和mysqli的函数库相比，PDO让跨数据库的使用更具有亲和
+
+力；与ADODB和MDB2相比，PDO更高效。
+目前而言，实现“数据库抽象层”任重而道远，使用PDO这样的“数据库访问抽象层”是一个不错的选择。
+PDO中包含三个预定义的类
+PDO中包含三个预定义的类，它们分别是 PDO、PDOStatement 和 PDOException。
+一、PDO
+PDO->beginTransaction() — 标明回滚起始点
+PDO->commit() — 标明回滚结束点，并执行SQL
+PDO->__construct() — 建立一个PDO链接数据库的实例
+PDO->errorCode() — 获取错误码
+PDO->errorInfo() — 获取错误的信息
+PDO->exec() — 处理一条SQL语句，并返回所影响的条目数
+PDO->getAttribute() — 获取一个“数据库连接对象”的属性
+PDO->getAvailableDrivers() — 获取有效的PDO驱动器名称
+PDO->lastInsertId() — 获取写入的最后一条数据的主键值
+PDO->prepare() — 生成一个“查询对象”
+PDO->query() — 处理一条SQL语句，并返回一个“PDOStatement”
+PDO->quote() — 为某个SQL中的字符串添加引号
+PDO->rollBack() — 执行回滚
+PDO->setAttribute() — 为一个“数据库连接对象”设定属性
+二、PDOStatement
+PDOStatement->bindColumn() — Bind a column to a PHP variable
+PDOStatement->bindParam() — Binds a parameter to the specified variable name
+PDOStatement->bindValue() — Binds a value to a parameter
+PDOStatement->closeCursor() — Closes the cursor, enabling the statement to be executed again.
+PDOStatement->columnCount() — Returns the number of columns in the result set
+PDOStatement->errorCode() — Fetch the SQLSTATE associated with the last operation on the statement handle
+PDOStatement->errorInfo() — Fetch extended error information associated with the last operation on the statement handle
+PDOStatement->execute() — Executes a prepared statement
+PDOStatement->fetch() — Fetches the next row from a result set
+PDOStatement->fetchAll() — Returns an array containing all of the result set rows
+PDOStatement->fetchColumn() — Returns a single column from the next row of a result set
+PDOStatement->fetchObject() — Fetches the next row and returns it as an object.
+PDOStatement->getAttribute() — Retrieve a statement attribute
+PDOStatement->getColumnMeta() — Returns metadata for a column in a result set
+PDOStatement->nextRowset() — Advances to the next rowset in a multi-rowset statement handle
+PDOStatement->rowCount() — Returns the number of rows affected by the last SQL statement
+PDOStatement->setAttribute() — Set a statement attribute
+PDOStatement->setFetchMode() — Set the default fetch mode for this statement
+PDO是一个“数据库访问抽象层”，作用是统一各种数据库的访问接口，与mysql和mysqli的函数库相比，PDO让跨数据库的使用更具有亲和
+
+力；与ADODB和MDB2相比，PDO更高效。目前而言，实现“数据库抽象层”任重而道远，使用PDO这样的“数据库访问抽象层”是一个不错的
+
+选择。
+PDO中包含三个预定义的类
+PDO中包含三个预定义的类，它们分别是 PDO、PDOStatement 和 PDOException。
+一、PDO
+PDO->beginTransaction() — 标明回滚起始点
+PDO->commit() — 标明回滚结束点，并执行SQL
+PDO->rollBack() — 执行回滚
+PDO->__construct() — 建立一个PDO链接数据库的实例
+PDO->errorCode() — 获取错误码
+PDO->errorInfo() — 获取错误的信息
+PDO->exec() — 处理一条SQL语句，并返回所影响的条目数
+PDO->getAttribute() — 获取一个“数据库连接对象”的属性
+PDO->getAvailableDrivers() — 获取有效的PDO驱动器名称
+PDO->lastInsertId() — 获取写入的最后一条数据的主键值
+PDO->prepare() — 生成一个“查询对象”
+PDO->query() — 处理一条SQL语句，并返回一个“PDOStatement”
+PDO->quote() — 为某个SQL中的字符串添加引号
+PDO->setAttribute() — 为一个“数据库连接对象”设定属性
+详解1) PDO中的数据库连接
+$dsn = ‘mysql:dbname=ent;host=127.0.0.1′;
+$user = ‘root';
+$password = ‘123456′;
+try {
+$dbh = new PDO($dsn, $user, $password, array(PDO::ATTR_PERSISTENT => true));
+$dbh->query('set names utf8;');
+foreach ($dbh->query('SELECT * from tpm_juese') as $row) {
+print_r($row);
+}
+} catch (PDOException $e) {
+echo ‘Connection failed: ‘ . $e->getMessage();
+}
+许多Web应用会因为使用了向数据库的持久连接而得到优化。持久连接不会在脚本结束时关闭，
+相反它会被缓存起来并在另一个脚本通过同样的标识请求一个连接时得以重新利用。
+持久连接的缓存可以使你避免在脚本每次需要与数据库对话时都要部署一个新的连接的资源消耗，让你的Web应用更加快速。
+上面实例中的array(PDO::ATTR_PERSISTENT => true)就是把连接类型设置为持久连接。
+详解2) PDO中的事务
+PDO->beginTransaction()，PDO->commit()，PDO->rollBack()这三个方法是在支持回滚功能时一起使用的。PDO->beginTransaction()方
+
+法标明起始点，PDO->commit()方法标明回滚结束点，并执行SQL，PDO->rollBack()执行回滚。
+<?php
+try {
+$dbh = new PDO('mysql:host=localhost;dbname=test', ‘root', ”);
+$dbh->query('set names utf8;');
+$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$dbh->beginTransaction();
+$dbh->exec(”INSERT INTO `test`.`table` (`name` ,`age`)VALUES ('mick', 22);”);
+$dbh->exec(”INSERT INTO `test`.`table` (`name` ,`age`)VALUES ('lily', 29);”);
+$dbh->exec(”INSERT INTO `test`.`table` (`name` ,`age`)VALUES ('susan', 21);”);
+$dbh->commit();
+} catch (Exception $e) {
+$dbh->rollBack();
+echo “Failed: ” . $e->getMessage();
+}
+?>
+现在你已经通过PDO建立了连接，在部署查询之前你必须搞明白PDO是怎样管理事务的。如果你以前从未遇到过事务处理，（现在简单介绍
+
+一下：）它们提供了4个主要的特性：原子性，一致性，独立性和持久性（Atomicity, Consistency, Isolation and Durability，ACID）
+
+通俗一点讲，一个事务中所有的工作在提交时，即使它是分阶段执行的，也要保证安全地应用于数据库，不被其他的连接干扰。事务工作
+
+也可以在请求发生错误时轻松地自动取消。
+事务的典型运用就是通过把批量的改变“保存起来”然后立即执行。这样就会有彻底地提高更新效率的好处。换句话说，事务可以使你的
+
+脚本更快速同时可能更健壮（要实现这个优点你仍然需要正确的使用它们）。
+不幸运的是，并不是每个数据库都支持事务，因此PDO需要在建立连接时运行在被认为是“自动提交”的模式下。自动提交模式意味着你执
+
+行的每个查询都有它自己隐含的事务处理，无论数据库支持事务还是因数据库不支持而不存在事务。如果你需要一个事务，你必须使用 
+
+PDO->beginTransaction() 方法创建一个。如果底层驱动不支持事务处理，一个PDOException就会被抛出（与你的异常处理设置无关，因
+
+为这总是一个严重的错误状态）。在一个事物中，你可以使用 PDO->commit() 或 PDO->rollBack() 结束它，这取决于事务中代码运行是
+
+否成功。
+当脚本结束时或一个连接要关闭时，如果你还有一个未处理完的事务，PDO将会自动将其回滚。这是对于脚本意外终止的情况来说是一个安
+
+全的方案——如果你没有明确地提交事务，它将会假设发生了一些错误，为了你数据的安全，所以就执行回滚了。
+二、PDOStatement
+PDOStatement->bindColumn() — Bind a column to a PHP variable
+PDOStatement->bindParam() — Binds a parameter to the specified variable name
+PDOStatement->bindValue() — Binds a value to a parameter
+PDOStatement->closeCursor() — Closes the cursor, enabling the statement to be executed again.
+PDOStatement->columnCount() — Returns the number of columns in the result set
+PDOStatement->errorCode() — Fetch the SQLSTATE associated with the last operation on the statement handle
+PDOStatement->errorInfo() — Fetch extended error information associated with the last operation on the statement handle
+PDOStatement->execute() — Executes a prepared statement
+PDOStatement->fetch() — Fetches the next row from a result set
+PDOStatement->fetchAll() — Returns an array containing all of the result set rows
+PDOStatement->fetchColumn() — Returns a single column from the next row of a result set
+PDOStatement->fetchObject() — Fetches the next row and returns it as an object.
+PDOStatement->getAttribute() — Retrieve a statement attribute
+PDOStatement->getColumnMeta() — Returns metadata for a column in a result set
+PDOStatement->nextRowset() — Advances to the next rowset in a multi-rowset statement handle
+PDOStatement->rowCount() — Returns the number of rows affected by the last SQL statement
+PDOStatement->setAttribute() — Set a statement attribute
+PDOStatement->setFetchMode() — Set the default fetch mode for this statement
+三、PDOException
+PDO 提供了3中不同的错误处理策略。
+1. PDO::ERRMODE_SILENT
+这是默认使用的模式。PDO会在statement和database对象上设定简单的错误代号，你可以使用PDO->errorCode() 和 PDO->errorInfo() 方
+
+法检查错误；如果错误是在对statement对象进行调用时导致的，你就可以在那个对象上使用 PDOStatement->errorCode() 或 
+
+PDOStatement->errorInfo() 方法取得错误信息。而如果错误是在对database对象调用时导致的，你就应该在这个database对象上调用那
+
+两个方法。
+2. PDO::ERRMODE_WARNING
+作为设置错误代号的附加，PDO将会发出一个传统的E_WARNING信息。这种设置在除错和调试时是很有用的，如果你只是想看看发生了什么
+
+问题而不想中断程序的流程的话。
+3. PDO::ERRMODE_EXCEPTION
+作为设置错误代号的附件，PDO会抛出一个PDOException异常并设置它的属性来反映错误代号和错误信息。这中设置在除错时也是很有用的
+
+，因为他会有效的“放大（blow up）”脚本中的出错点，非常快速的指向一个你代码中可能出错区域。（记住：如果异常导致脚本中断，
+
+事务处理回自动回滚。）
+异常模式也是非常有用的，因为你可以使用比以前那种使用传统的PHP风格的错误处理结构更清晰的结构处理错误，比使用安静模式使用更
+
+少的代码及嵌套，也能够更加明确地检查每个数据库访问的返回值。
+关于PHP中异常的更多信息请看Exceptions章节
+PDO 使用基于SQL-92 SQLSTATE 的错误代号字符串；特定的PDO驱动应当将自己本身的代号对应到适当的SQLSTATE代号上。PDO-
+
+>errorCode() 方法只返回单一的SQLSTATE代号。如果你需要关于一个错误的更加有针对性的信息，PDO也提供了一个PDO->errorInfo()方
+
+法，它可以返回一个包含了SQLSTATE代号，特定数据库驱动的错误代号和特定数据库驱动的错误说明字符串。
+<?php
+// 修改默认的错误显示级别
+$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+?>
+属性列表：
+PDO::PARAM_BOOL
+表示一个布尔类型
+PDO::PARAM_NULL
+表示一个SQL中的NULL类型
+PDO::PARAM_INT
+表示一个SQL中的INTEGER类型
+PDO::PARAM_STR
+表示一个SQL中的SQL CHAR，VARCHAR类型
+PDO::PARAM_LOB
+表示一个SQL中的large object类型
+PDO::PARAM_STMT
+表示一个SQL中的recordset类型，还没有被支持
+PDO::PARAM_INPUT_OUTPUT
+Specifies that the parameter is an INOUT parameter for a stored procedure. You must bitwise-OR this value with an 
+
+explicit PDO::PARAM_* data type.
+PDO::FETCH_LAZY
+将每一行结果作为一个对象返回
+PDO::FETCH_ASSOC
+仅仅返回以键值作为下标的查询的结果集，名称相同的数据只返回一个
+PDO::FETCH_NAMED
+仅仅返回以键值作为下标的查询的结果集，名称相同的数据以数组形式返回
+PDO::FETCH_NUM
+仅仅返回以数字作为下标的查询的结果集
+PDO::FETCH_BOTH
+同时返回以键值和数字作为下标的查询的结果集
+PDO::FETCH_OBJ
+以对象的形式返回结果集
+PDO::FETCH_BOUND
+将PDOStatement::bindParam()和PDOStatement::bindColumn()所绑定的值作为变量名赋值后返回
+PDO::FETCH_COLUMN
+表示仅仅返回结果集中的某一列
+PDO::FETCH_CLASS
+表示以类的形式返回结果集
+PDO::FETCH_INTO
+表示将数据合并入一个存在的类中进行返回
+PDO::FETCH_FUNC
+PDO::FETCH_GROUP
+PDO::FETCH_UNIQUE
+PDO::FETCH_KEY_PAIR
+以首个键值下表，后面数字下表的形式返回结果集
+PDO::FETCH_CLASSTYPE
+PDO::FETCH_SERIALIZE
+表示将数据合并入一个存在的类中并序列化返回
+PDO::FETCH_PROPS_LATE
+Available since PHP 5.2.0
+PDO::ATTR_AUTOCOMMIT
+在设置成true的时候，PDO会自动尝试停止接受委托，开始执行
+PDO::ATTR_PREFETCH
+设置应用程序提前获取的数据大小，并非所有的数据库哦度支持
+PDO::ATTR_TIMEOUT
+设置连接数据库超时的值
+PDO::ATTR_ERRMODE
+设置Error处理的模式
+PDO::ATTR_SERVER_VERSION
+只读属性，表示PDO连接的服务器端数据库版本
+PDO::ATTR_CLIENT_VERSION
+只读属性，表示PDO连接的客户端PDO驱动版本
+PDO::ATTR_SERVER_INFO
+只读属性，表示PDO连接的服务器的meta信息
+PDO::ATTR_CONNECTION_STATUS
+PDO::ATTR_CASE
+通过PDO::CASE_*中的内容对列的形式进行操作
+PDO::ATTR_CURSOR_NAME
+获取或者设定指针的名称
+PDO::ATTR_CURSOR
+设置指针的类型，PDO现在支持PDO::CURSOR_FWDONLY和PDO::CURSOR_FWDONLY
+PDO::ATTR_DRIVER_NAME
+返回使用的PDO驱动的名称
+PDO::ATTR_ORACLE_NULLS
+将返回的空字符串转换为SQL的NULL
+PDO::ATTR_PERSISTENT
+获取一个存在的连接
+PDO::ATTR_STATEMENT_CLASS
+PDO::ATTR_FETCH_CATALOG_NAMES
+在返回的结果集中，使用自定义目录名称来代替字段名。
+PDO::ATTR_FETCH_TABLE_NAMES
+在返回的结果集中，使用自定义表格名称来代替字段名。
+PDO::ATTR_STRINGIFY_FETCHES
+PDO::ATTR_MAX_COLUMN_LEN
+PDO::ATTR_DEFAULT_FETCH_MODE
+Available since PHP 5.2.0
+PDO::ATTR_EMULATE_PREPARES
+Available since PHP 5.1.3.
+PDO::ERRMODE_SILENT
+发生错误时不汇报任何的错误信息，是默认值
+PDO::ERRMODE_WARNING
+发生错误时发出一条php的E_WARNING的信息
+PDO::ERRMODE_EXCEPTION
+发生错误时抛出一个PDOException
+PDO::CASE_NATURAL
+回复列的默认显示格式
+PDO::CASE_LOWER
+强制列的名字小写
+PDO::CASE_UPPER
+强制列的名字大写
+PDO::NULL_NATURAL
+PDO::NULL_EMPTY_STRING
+PDO::NULL_TO_STRING
+PDO::FETCH_ORI_NEXT
+获取结果集中的下一行数据，仅在有指针功能时有效
+PDO::FETCH_ORI_PRIOR
+获取结果集中的上一行数据，仅在有指针功能时有效
+PDO::FETCH_ORI_FIRST
+获取结果集中的第一行数据，仅在有指针功能时有效
+PDO::FETCH_ORI_LAST
+获取结果集中的最后一行数据，仅在有指针功能时有效
+PDO::FETCH_ORI_ABS
+获取结果集中的某一行数据，仅在有指针功能时有效
+PDO::FETCH_ORI_REL
+获取结果集中当前行后某行的数据，仅在有指针功能时有效
+PDO::CURSOR_FWDONLY
+建立一个只能向后的指针操作对象
+PDO::CURSOR_SCROLL
+建立一个指针操作对象，传递PDO::FETCH_ORI_*中的内容来控制结果集
+PDO::ERR_NONE (string)
+设定没有错误时候的错误信息
+PDO::PARAM_EVT_ALLOC
+Allocation event
+PDO::PARAM_EVT_FREE
+Deallocation event
+PDO::PARAM_EVT_EXEC_PRE
+Event triggered prior to execution of a prepared statement.
+PDO::PARAM_EVT_EXEC_POST
+Event triggered subsequent to execution of a prepared statement.
+PDO::PARAM_EVT_FETCH_PRE
+Event triggered prior to fetching a result from a resultset.
+PDO::PARAM_EVT_FETCH_POST
+Event triggered subsequent to fetching a result from a resultset.
+PDO::PARAM_EVT_NORMALIZE
+Event triggered during bound parameter registration allowing the driver to normalize the parameter name
+---------------------------------------------------------------------------------------------------------------------
+redis windows 下介绍
+
+-------------------------------------------------------------------------------------------------------------------
+下载压缩包 解压，
+打开dos窗口，进入解压目录 
+redis-server.exe redis.conf 启动redis redis.conf 可以不用，用默认配置
+另外开启一个窗口
+redis-cli.exe -h 202.117.16.133 -p 6379 开启客户端 -h 后跟本机目录127.0.0.1 -p 是端口
+------------------------------------------------------------------------------------------------
+mysql 删除重复记录
+delete test6 from test6 left join (select id s_id,ship_type_code st from test6 group by st) b on id=s_id where st is 
+
+null;
+----------------------------------------------------------------------------------------
+ngix 相关
+cd nginx
+
+start nginx
+
+这样，nginx 服务就启动了。打开任务管理器，查看 nginx.exe 进程，有二个进程会显示，占用系统资源，那是相当的少。然后再打开浏
+
+览器，输入 http://127.0.0.1/  就可以看到nginx的欢迎页面了，非常友好
+
+nginx -s stop          // 停止nginx
+nginx -s reload       // 重新加载配置文件
+nginx -s quit          // 退出nginx
+nginx php 打开
+E:/nginx/php5这个是php安装路径，首先要把这个设置到环境变量
+E:\nginx\php5\php-cgi.exe -b 127.0.0.1:9000 -c E:/nginx/php5/php.ini
+--------------------------------------------------------------------------------------------------------
+phpExcel
+字符以文本形式
+ $objActSheet->setCellValueExplicit('E3','44030520585000',PHPExcel_Cell_DataType::TYPE_STRING);
+ $objActSheet->getStyle('E3')->getNumberFormat()->setFormatCode("@");
+ -------------------------------------------------------------------------------------------------------
+ js 阻止默认浏览器动作
+ function stopPrevent(event){
+		if(event && event.preventDefault) {
+	　　			//阻止默认浏览器动作(W3C)
+	　　			event.preventDefault();
+			} else {
+			　　//IE中阻止函数器默认动作的方式
+			　　window.event.returnValue = false;
+			}
+					return false;
+ }
+------------------------------------------------------------------------------------------------------------
+MYSQL查询一个表的所有字段为一个字符串
+select group_concat(COLUMN_NAME) from information_schema.COLUMNS
+where table_name = '表名'
+and table_schema = '数据库名';
+-------------------------------------------------------------------------------------------------------------
+ajax 跨域请求
+客户端代码实例
+<script type="text/javascript">
+function sed(){
+	$.ajax({
+		url:'http://www.iship2.com/adminuser/user/ajax',
+		type:'GET',
+		dataType:'jsonp',
+		jsonp:'callback',
+		success:function(json){
+			alert(json);
+		}
+	
+	})
+
+}
+
+</script>
+服务端代码：
+		$callBack=$_GET['callback'];
+		$arra=array(1,2,3);
+		echo $callBack.'(\''.json_encode($arra).'\')';
+------------------------------------------------------------------------------------------------------------------
+打开错误信息
+if( !ini_get('display_errors') ) {
+			ini_set('display_errors', 'On');
+		}
+error_reporting(E_WARNING | E_ERROR | E_PARSE | E_CORE_ERROR | E_CORE_WARNING);
+------------------------------------------------------------------------------------------------------------------
+判断文件utf8有没有bom
+function checkBOM ($filename) {
+global $auto;
+$contents=file_get_contents($filename);
+$charset[1]=substr($contents, 0, 1);
+$charset[2]=substr($contents, 1, 1);
+$charset[3]=substr($contents, 2, 1);
+if (ord($charset[1])==239 && ord($charset[2])==187 && ord($charset[3])==191) {
+if ($auto==1) {
+$rest=substr($contents, 3);
+rewrite ($filename, $rest);
+return ("<font color=red>BOM found, automatically removed.</font>");
+} else {
+return ("<font color=red>BOM found.</font>");
+}
+}
+else return '';
+}
+--------------------------------------------------------------------------------------------------------
+pdf自动打印
+  $js= 'print({bUI: false,bSilent: true,bShrinkToFit: true});
+添加js，
+fpdi ->includeJs($js);
+-------------------------------------------------------------------------------------------------
+数组转xml
+public static function data2XML(array $data, SimpleXMLElement $xml, $child = "printData")
+    {
+
+        foreach($data as $key => $val) {
+            if(is_array($val)) {
+                if(is_numeric($key)) {
+                    $node  = $xml->addChild($child);
+                    $nodes = $node->getName($child);
+                } else {
+
+                    $node  = $xml->addChild($key);
+                    $nodes = $node->getName($key);
+                }
+               self::data2Xml($val, $node,$child);
+            } else {
+                $xml->addChild($key, $val);
+            }
+        }
+		return $xml;
+
+    }
+------------------------------------------------------------------------------------------------------------
+ckplayer
+-------------------------------------------------------------------------------------------------
+error_reporting(0);
+$AccountID = $_SERVER['PHP_AUTH_USER'];
+$AccountPassword = $_SERVER['PHP_AUTH_PW'];
+if(!
+
+($AccountID=='111'&& $AccountPassword=='222'))
+{
+    header('WWW-Authenticate: Basic realm="天使的思念"');
+    header
+
+('HTTP/1.0 401 Unauthorized');
+    echo '验证失败';
+    exit;
+}
+else
+{
+    echo '验证成功！';
+}
+------------------------------------------------------------------------------------------------------------
+js防止客户端查看源码
+<html> 
+<head> 
+<script> 
+function clear(){ 
+Source=document.body.firstChild.data;
+document.open(); 
+document.close(); 
+document.title="就是不给您看"; 
+document.body.innerHTML=Source; 
+}</script> 
+</head> 
+<body onload=clear()> 
+    不还意思，妹子有点害羞，不给您看
+</body> 
+</html>
+----------------------------------------------------------------------------------------------------------
+判断是否手机登陆
+function is_mobile_request()  
+ 
+{  
+ 
+$_SERVER['ALL_HTTP'] = isset($_SERVER['ALL_HTTP']) ? $_SERVER['ALL_HTTP'] : '';  
+ 
+$mobile_browser = '0';  
+ 
+if(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|iphone|ipad|ipod|android|xoom)/i', strtolower
+
+($_SERVER['HTTP_USER_AGENT'])))  
+ 
+  $mobile_browser++;  
+ 
+if((isset($_SERVER['HTTP_ACCEPT'])) and (strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') !== 
+
+false))  
+ 
+  $mobile_browser++;  
+ 
+if(isset($_SERVER['HTTP_X_WAP_PROFILE']))  
+ 
+  $mobile_browser++;  
+ 
+if(isset($_SERVER['HTTP_PROFILE']))  
+ 
+  $mobile_browser++;  
+ 
+$mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'],0,4));  
+ 
+$mobile_agents = array(  
+ 
+      'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',  
+ 
+      'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',  
+ 
+      'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',  
+ 
+      'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',  
+ 
+      'newt','noki','oper','palm','pana','pant','phil','play','port','prox',  
+ 
+      'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',  
+ 
+      'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',  
+ 
+      'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',  
+ 
+      'wapr','webc','winw','winw','xda','xda-'
+ 
+      );  
+ 
+if(in_array($mobile_ua, $mobile_agents))  
+ 
+  $mobile_browser++;  
+ 
+if(strpos(strtolower($_SERVER['ALL_HTTP']), 'operamini') !== false)  
+ 
+  $mobile_browser++;  
+ 
+// Pre-final check to reset everything if the user is on Windows  
+ 
+if(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows') !== false)  
+ 
+  $mobile_browser=0;  
+ 
+// But WP7 is also Windows, with a slightly different characteristic  
+ 
+if(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), 'windows phone') !== false)  
+ 
+  $mobile_browser++;  
+ 
+if($mobile_browser>0)  
+ 
+  return true;  
+ 
+else
+ 
+  return false;  
+ 
+}
+-------------------------------------------------------------------------------------------------------
+文件bom头
+  fwrite($fp,chr(0xEF).chr(0xBB).chr(0xBF));  
+-----------------------------------------------------------------------------------------------------------
+导出Word以大纲形式打开
+<html xmlns:o="urn:schemas-microsoft-com:office:office"  xmlns:w="urn:schemas-microsoft-com:office:word"  
+
+xmlns="http://www.w3.org/TR/REC-html40">
+  <head>
+	   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	   <xml><w:WordDocument><w:View>Print</w:View></xml>
+	   <style type="text/css">
+		body{font-size:15px;}
+	   </style>
+</head>
+
+-------------------------------
+
+分页：
+ <form id="searchForm" name="searchForm" method="post" action='/merchant/return-order/list'>
+  <div class="pagination" targetType="navTab" totalCount="<{$count}>" numPerPage="<{$pageSize}>" currentPage="<{$page}>"  pageNumShown="10" url="<{$url}>"></div>
+ </form>
+
+show table status like 'table_name' 可以看到auto_increment这一列是表现有的值.
+alter table test AUTO_INCREMENT = 1000;
+
+--------------------------------------------------------------------------------------------------------
+ centos 安装VirtualBox 出现方框、乱码、汉字不显示的解决办法 (2012-09-04 14:28:05)
+ 解决方法  一行代码
+
+yum install bitmap-fonts-cjk
+------------------------------------------------------------------------------------
+中文空格这里面有好几种：没有简单的解决问题的方式，比如半角全角空格，比如段落符都会显示为空白的，然后让人们误解它是空格，所以去掉空格之前一定要先确认自己的是不是空格，我下面分析一下这两种的解决办法。
+
+（1）/[\s|　]+/这个就可以，注意|后面的跟的是全角空格
+
+（2）mb中的正则替换也可以试试
+
+另外注意使用Unicode的时候，加上正则表达式描述符u
+
+但由于汉语中显示为空格模样的有很多个，比如说我下面碰到的这么一个，它的unicode编码为C2A0，使用下面的表达式就能解决问题。
+
+
+$new['content'] = preg_replace('/^[(\xc2\xa0)|\s]+/', '', $new['content']);
+
+
+这里有个细节： \xc2a0本来是一个Unicode字符，但是不能匹配多个，只能替换一个，【这里可能是因为字节的原因】后来突然找到这么一种写法，解决了问题，另外为了避免，中文空格和英文空格相混杂的情形，后面又加了个\s来清除。
+
+
+其实在Unicode上的正则表达式确实不怎么好用。  
+ $element=  preg_replace("/\x{C2A0}/u" , ' ' , $element);
+  $unicodeSpacePattern = '/\x{200b}/u';
+/(\s|\&nbsp\;|　|\xc2\xa0)/
+t=  preg_replace('/x{a0}/u','',$element);
+    function utf8_unicode($name){  
+        $name = iconv('UTF-8', 'UCS-2', $name);  
+        $len  = strlen($name);  
+        $str  = '';  
+        for ($i = 0; $i < $len - 1; $i = $i + 2){  
+            $c  = $name[$i];  
+            $c2 = $name[$i + 1];  
+            if (ord($c) > 0){   //两个字节的文字  
+                $str .= '\u'.base_convert(ord($c), 10, 16).str_pad(base_convert(ord($c2), 10, 16), 2, 0, STR_PAD_LEFT);  
+                //$str .= base_convert(ord($c), 10, 16).str_pad(base_convert(ord($c2), 10, 16), 2, 0, STR_PAD_LEFT);  
+            } else {  
+                $str .= '\u'.str_pad(base_convert(ord($c2), 10, 16), 4, 0, STR_PAD_LEFT);  
+                //$str .= str_pad(base_convert(ord($c2), 10, 16), 4, 0, STR_PAD_LEFT);  
+            }  
+        }  
+        $str = strtoupper($str);//转换为大写  
+        return $str;  
+    }  
+  匹配所有非字符和数字的正则
+(((?=[\x21-\x7e]+)[^A-Za-z0-9])|\s)
+这个匹配所有键盘上可见的非字母和数字的符号
+----------------------------------------------------------------------------------
+JS Print Setup 火狐插件
+https://addons.mozilla.org/en-US/firefox/addon/seamless-print/
+--------------------------------------------------------------------------------------
+mysql 清空查询缓存
+reset query cache;
+
+---------------------------------------------------------------------------------------------
+  $file = "/tmp/中文名.tar.gz";
+
+    $filename = basename($file);
+
+    header("Content-type: application/octet-stream");
+
+    //处理中文文件名
+    $ua = $_SERVER["HTTP_USER_AGENT"];
+    $encoded_filename = rawurlencode($filename);
+    if (preg_match("/MSIE/", $ua)) {
+     header('Content-Disposition: attachment; filename="' . $encoded_filename . '"');
+    } else if (preg_match("/Firefox/", $ua)) {
+     header("Content-Disposition: attachment; filename*=\"utf8''" . $filename . '"');
+    } else {
+     header('Content-Disposition: attachment; filename="' . $filename . '"');
+    }
+
+    //让Xsendfile发送文件
+    header("X-Sendfile: $file");
+-----------------------------------------------------------------------------------------------------
+脚本测试
+loadrunner
+
+-------------------------------------------------------------------------------------------------------
+按键精灵
+--------------------------------------------------------------------------------------------------------
+popen调用系统命令
+$flagFile = APPLICATION_PATH . '/../data/log/shipBatchSubmit.lock'.$pid;
+
+$fp = popen("top -b -n 2 | grep Cpu | awk '{print $5}' | cut -f 1 -d '.' | sed -n 2p",'r');
+$rs = "";
+while(!feof($fp)){
+    $rs .= fread($fp,1024);
+}
+if($rs<40){
+    echo  "cpu资源过低($rs),已经中止", '[' . date('Y-m-d H:i:s') . '] '."\r\n";
+    exit();
+}
+----------------------------------------------------------------------------------------------------------------
+6.解除文本的被动选中状态（纯干货）
+
+    当在点击一些按钮时，有时会出现文本被选中的情况，让客户看见就犹如bug一般，以下是解除这一状态的代码，粘贴即可。
+
+    if(document.all){
+        document.onselectstart= function(){return false}; //for ie
+    }else{
+        document.onmousedown= function(){return false};
+        document.onmouseup= function(){return true};
+    }
+    document.onselectstart = new Function('event.returnValue=false');
+-----------------------------------------------------------------------------------------
+preg_split('//u',$orderReceipAddress, -1);把字符串拆分为一个一个字母或汉字
+
+-------------------------------------------------------------------------------------------------
+zend_pdf 合并；
+public function getpdfAction(){
+    $pdfDocs = array(APPLICATION_PATH . '/../data/pdf/Fourpx/SOE01740023535.pdf', APPLICATION_PATH . '/../data/pdf/BHHKDHL/SOE01740023434.pdf');
+        $pdfNew = new Zend_Pdf();
+        foreach ($pdfDocs as $file) {
+            $pdf = Zend_Pdf::load($file);
+            $extractor = new Zend_Pdf_Resource_Extractor();
+            foreach ($pdf->pages as $page) {
+                $pdfExtract = $extractor->clonePage($page);
+                $pdfNew->pages[] = $pdfExtract;
+            }
+        }
+
+        $mergePdf = "mergefile.pdf";
+        header('content-type:application/pdf');
+        echo $pdfNew->render();
+    }
+------------------------------------------------------------------------------------------------------
+pcntl扩展安装
+加载 pcntl 有两种方式
+一种重新编译安装，在编译时加  --enable-pcntl
+./configure --prefix=/usr/local/php --with-mysql=/usr/local/mysql --with-apxs2=/usr/local/apache/bin/apxs --enable-pcntl
+
+
+另一种格外挂载
+首先进入到安装包存放目录
+# cd /usr/local/src
+
+解压缩安装包
+# tar -zxvf php-5.4.16.tar.gz
+
+进入解压缩出来的源码包文件夹中存放 pcntl 的地方
+# cd /usr/local/src/php-5.4.16/ext/pcntl
+
+利用已装好的 php 安装目录中 bin 文件夹的 phpize 进行模块扩展命令
+# /usr/local/php/bin/phpize
+
+编译，将安装包内的 pcntl 与已安装好的 php 关联，/usr/local/php 为已安装的php路径
+# ./configure --with-php-config=/usr/local/php/bin/php-config
+
+# make
+
+# make install
+
+安装后会提示 安装后文件所在位置
+这里是 /usr/local/php/lib/php/extensions/no-debug-non-zts-20100525/
+
+然后修改php.ini文件
+# vi /usr/local/php/lib/php.ini
+
+在最后一行添加 extension = pcntl.so
+
+按Esc输入:wq 保存退出
+
+
+
+
+pcntl函数一定要在CGI模式下运行
+打开CGI模式方法:
+修改apache配置文件
+# vi /usr/local/apache/conf/httpd.conf
+
+注释掉配置文件中的
+LoadModule php5_module modules/libphp5.so
+为
+#LoadModule php5_module modules/libphp5.so
+
+并在最后一行添加
+Action application/x-httpd-php /cgi-bin/php-cgi
+按Esc输入:wq 保存退出
+
+如果apache安装目录下的 cgi-bin 文件夹中没有 php-cgi 文件，则从 php 安装目录中的 bin 文件夹下复制过来
+# cp /usr/local/php/bin/php-cgi /usr/local/apache/cgi-bin
+
+在CGI 模式下，输出网页时会多出一些额外的内容，为了不显示这些内容修改 php.ini
+# vi /usr/local/php/lib/php.ini
+修改
+expose_php = On
+为
+expose_php = Off
+按Esc输入:wq 保存退出
+
+重启 apache
+# /usr/local/apache/bin/apachectl -k restart
+
+------------------------------------------------------------------------------------------------------------------
+fsock POST 数据
+$fp = fsockopen('www.jinkouOms.com', 80);
+$vars = array(
+    'sign' => 'sfs'
+);
+$postCentent = http_build_query($vars);
+
+fwrite($fp, "POST /default/gtb-order-api/index?".http_build_query($requestFields)." HTTP/1.1\r\n");
+fwrite($fp, "Host: 'www.jinkouOms.com \r\n");
+fwrite($fp, "Content-Type: application/x-www-form-urlencoded\r\n");
+fwrite($fp, "Content-Length: ".strlen($content)."\r\n");
+fwrite($fp, "Connection: close\r\n");
+fwrite($fp, "sign: text\r\n");
+fwrite($fp, "\r\n");
+
+//fwrite($fp, $postCentent);
+fwrite($fp, "\r\n");
+fwrite($fp, $content);
+//header('Content-type: text/plain');
+while (!feof($fp)) {
+    echo fgets($fp, 1024);
+}
+-------------------------------------------------------------------------------------------------------------------
+把一个xml插入到另一个xml文档
+  $DOMChild = new DOMDocument;
+            $DOMChild->load($overseaOrder['xml_file_path']);
+            $childnode = $DOMChild->documentElement;
+            $DOMParent = new DOMDocument;
+            //$DOMParent->formatOutput = true;
+            $DOMParent->loadXML($IdocXmlStream);
+            $logistc=$DOMParent->createElement('logistics_interface');
+            $domLogistc=$DOMParent->documentElement->appendChild($logistc);
+            $node = $DOMParent->importNode($childnode, true);
+            $domLogistc->appendChild($node);
+            //$DOMParent->documentElement->appendChild($node);
+            $sendXml=$DOMParent->saveXML();
+------------------------------------------------------------------生成海关UID 
+function createGuid(){
+        $uid=uniqid("", true);
+        $guid='';
+        $hash= strtoupper(hash('ripemd128',$uid.$guid.md5(time() . mt_rand(0,1000))));
+        $guid = substr($hash,0,8).'-'.substr($hash,8,4).'-'.substr($hash,12,4).'-'.substr($hash,16,4).'-'.substr($hash,20,12);
+        return $guid;
+}
+------------------------------------------------------------------------------------
+^([1-9]\d*)$|^(0|[1-9]\d*)\.{1}\d{1,2}$  匹配两位小数
+------------------------------------------------------------------------------------------
+linux 修改yum源
+] 首先备份/etc/yum.repos.d/CentOS-Base.repo
+
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+[2] 进入yum源配置文件所在文件夹
+
+[root@localhost yum.repos.d]# cd /etc/yum.repos.d/
+
+[3] 下载163的yum源配置文件，放入/etc/yum.repos.d/(操作前请做好相应备份)
+
+[root@localhost yum.repos.d]# wget http://mirrors.163.com/.help/CentOS6-Base-163.repo
+更改为阿里云：
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo 
+centos7:
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+[4] 运行yum makecache生成缓存
+
+[root@localhost yum.repos.d]# yum makecache
+
+[5] 更新系统
+
+[root@localhost yum.repos.d]# yum -y update
+
+[6] 安装vim编辑器
+
+[root@localhost ~]# yum -y install vim*
+
+----------------------------------------
+mstsc 远程窗口  192.168.27.17买买买主机
+----------------------------------------
+svn 添加防火墙
+1>iptables -I INPUT -i eth0 -p tcp --dport 3690 -j ACCEPT
+
+2>iptables -I OUTPUT -o eth0 -p tcp --sport 3690 -j ACCEPT
+#将更改进行保存
+/etc/rc.d/init.d/iptables save
+删除一条记录：
+iptables -D INPUT 4
+svnadmin create oms
+创建仓库
+svn import . file://var/svn/oms/trunck -m add
+导入文件到仓库中
+---------------------------------------------------
+mysql rpm 安装
+ rpm -ivh mysql-community-common-5.7.17-1.el5.i686.rpm --conflicts
+256  rpm -ivh mysql-community-common-5.7.17-1.el5.i686.rpm --nodeps
+257  ls
+258  rpm -ivh mysql-community-libs-5.7.17-1.el5.i686.rpm 
+259  rpm -ivh mysql-community-client-5.7.17-1.el5.i686.rpm 
+260  rpm -ivh mysql-community-server-5.7.17-1.el5.i686.rpm 
+mysql 源码安装centos7
+yum -y install wget gcc-c++ ncurses-devel cmake make perl boost boost-devel boost-doc
+DCMAKE_INSTALL_PREFIX 安装目录
+DMYSQL_UNIX_ADDR 服务器监听套接字连接的Unix套接字文件路径
+DDEFAULT_CHARSET 默认字符编码可选择：binary, armscii8, ascii, big5, cp1250, cp1251, cp1256, cp1257, cp850, cp852, cp866, cp932, dec8, eucjpms, euckr, gb2312, gbk, geostd8, greek, hebrew, hp8, keybcs2, koi8r, koi8u, latin1, latin2, latin5, latin7, macce, macroman, sjis, swe7, tis620, ucs2, ujis, utf8, utf8mb4, utf16, utf16le, utf32
+DDEFAULT_COLLATION 默认字符编码规则
+DWITH_EXAMPLE_STORAGE_ENGINE=0 EXAMPLE引擎名称，排除哪个引擎，
+DWITH_EXAMPLE_STORAGE_ENGINE=1 EXAMPLE引擎名称，安装哪个引擎，
+DWITH_READLINE 绑定 readline 的终端快捷键及历史记录功能，
+DENABLED_LOCAL_INFILE 允许导入文件到数据库，以加快数据导入速度，
+DMYSQL_DATADIR 数据存放目录
+DENABLE_DOWNLOADS 是否下载测试参数，打开从goole下载参数并
+cmake \
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql \
+-DMYSQL_UNIX_ADDR=/usr/local/mysql/mysql.sock \
+-DDEFAULT_CHARSET=utf8 \
+-DDEFAULT_COLLATION=utf8_general_ci \
+-DWITH_MYISAM_STORAGE_ENGINE=1 \
+-DWITH_INNOBASE_STORAGE_ENGINE=1 \
+-DWITH_ARCHIVE_STORAGE_ENGINE=1 \
+-DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+-DWITH_MEMORY_STORAGE_ENGINE=1 \
+-DWITH_READLINE=1 \
+-DENABLED_LOCAL_INFILE=1 \
+-DMYSQL_DATADIR=/home/mysql/data \
+-DMYSQL_USER=mysql \
+-DMYSQL_TCP_PORT=3306 \
+-DENABLE_DOWNLOADS=1
+make && make install
+
+mysql 二进制包安装
+先查找是否安装mysql,mariadb
+rpm -qa | grep -i mariadb
+rpm -qa | grep -i mysql
+有的话卸载mysql,mariadb
+//把mariadb配置文件删除了
+mv /etc/my.cnf /etc/my.cnf.bak
+yum install libaio
+hell> groupadd mysql
+shell> useradd -r -g mysql -s /bin/false mysql
+shell> cd /usr/local
+shell> tar zxvf /path/to/mysql-VERSION-OS.tar.gz
+shell> ln -s full-path-to-mysql-VERSION-OS mysql
+shell> cd mysql
+shell> mkdir mysql-files
+shell> chown mysql:mysql mysql-files
+shell> chmod 750 mysql-files
+shell> bin/mysqld --initialize --user=mysql 
+生成一个临时密码，记住密码
+
+shell> bin/mysql_ssl_rsa_setup              
+shell> bin/mysqld_safe --user=mysql &
+# Next command is optional
+shell> cp support-files/mysql.server /etc/init.d/mysql.server 添加service命令
+chkconfig mysql on 开机启动
+修改环境变量 用mysql
+vi /etc/profile
+搜索 export PATH
+下面添加
+export PATH=/usr/local/mysql/bin:$PATH
+
+------------------------------------------------------------------------------
+sphinx安装
+yum -y install make gcc g++ gcc-c++ libtool autoconf automake imake mysql-devel libxml2-devel expat-devel
+wget http://sphinxsearch.com/files/sphinx-2.3.2-beta.tar.gz
+tar zxvf sphinx-2.3.2-beta.tar.gz 
+./configure --prefix=/usr/local/sphinx --with-mysql=/usr/local/mysql 
+
+
+
+-----------------------------------------------------------------
+svn 开机自动启动
+vi /etc/rc.d/rc.local
+添加命令
+/usr/bin/svnserve -d -r /home/svn
+---------------------------------------------------------------------
+nginx
+
+./configure --prefix=/var/server/nginx --sbin-path=/var/server/sbin --conf-path=/var/server/conf --error-log-path=/var/server/log --without-http_gzip_module
+php5.6安装
+缺少libxml2
+ yum install libxml2
+ yum install libxml2-devel -y
+ 安装ssl
+wget http://www.openssl.org/source/openssl-1.0.1c.tar.gz  
+tar -zxvf openssl-1.0.1c.tar.gz  
+./config && make && make install
+
+--with-mysqli=/usr 报错，configure: error: Please reinstall the mysql distribution
+改成--with-mysqli=mysqlnd
+
+./configure --prefix=/usr/local/php \
+--enable-soap \
+--enable-sockets \
+--with-mysql=/usr/ \
+--with-pdo-mysql=/usr \
+--with-mysqli=mysqlnd \
+--with-zlib --enable-mbstring \
+--enable-mbregex \
+--enable-shared \
+--with-openssl \
+--enable-fpm \
+--with-config-file-path=/usr/local/php/etc
+
+
+Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/
+Installing PHP CLI binary:        /usr/local/php/bin/
+Installing PHP CLI man page:      /usr/local/php/php/man/man1/
+Installing PHP FPM binary:        /usr/local/php/sbin/
+Installing PHP FPM config:        /usr/local/php/etc/
+Installing PHP FPM man page:      /usr/local/php/php/man/man8/
+Installing PHP FPM status page:   /usr/local/php/php/php/fpm/
+Installing PHP CGI binary:        /usr/local/php/bin/
+Installing PHP CGI man page:      /usr/local/php/php/man/man1/
+Installing build environment:     /usr/local/php/lib/php/build/
+Installing header files:           /usr/local/php/include/php/
+Installing helper programs:       /usr/local/php/bin/
+  program: phpize
+  program: php-config
+Installing man pages:             /usr/local/php/php/man/man1/
+  page: phpize.1
+  page: php-config.1
+Installing PEAR environment:      /usr/local/php/lib/php/
+[PEAR] Archive_Tar    - installed: 1.4.0
+[PEAR] Console_Getopt - installed: 1.4.1
+[PEAR] Structures_Graph- installed: 1.1.1
+[PEAR] XML_Util       - installed: 1.3.0
+[PEAR] PEAR           - installed: 1.10.1
+Wrote PEAR system config file at: /usr/local/php/etc/pear.conf
+You may want to add: /usr/local/php/lib/php to your php.ini include_path
+/usr/src/php-5.6.30/build/shtool install -c ext/phar/phar.phar /usr/local/php/bin
+ln -s -f phar.phar /usr/local/php/bin/phar
+安装gd扩展
+第一步：
+
+安装需要用到的库
+
+yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel
+
+第二步：
+
+进入到php的源码目录下的ext/gd目录（这里是源码目录，不是安装目录，注意区别）
+
+1.首先执行：{$php_indtall_dir}/bin/phpize
+
+注：这里的{$php_indtall_dir}指的是php的安装目录，如果安装到了/usr/local/php,那就执行/usr/local/php/bin/phpize，这里是要生成.configure编译文件的
+
+2.执行：./configure --with-png-dir --with-freetype-dir --with-jpeg-dir --with-gd --with-php-config=/usr/local/php/bin/php-config
+
+注：这里的--with-php-config目录根据自己php的安装路径配置
+
+3.执行：make && make install
+yum -y install libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libcurl curl-devel
+./configure --prefix=/usr/local/php \
+--enable-soap \
+--enable-sockets \
+--with-mysql \
+--with-pdo-mysql \
+--with-mysqli \
+--with-zlib \
+--enable-ftp \
+--enable-pcntl \
+--enable-zip \
+--with-iconv \
+--with-curl \
+--enable-mbstring \
+--enable-mbregex \
+--enable-shared \
+--with-openssl \
+--enable-fpm \
+--with-config-file-path=/usr/local/php/etc \
+--with-png-dir \
+--with-freetype-dir \
+--with-jpeg-dir \
+--with-gd \
+--enable-cgi \
+--with-apxs2=/usr/local/apache/bin/apxs 
+第三步：修改php.ini
+
+添加：extension=gd.so
+/usr/local/php/lib/php/extensions/no-debug-non-zts-20131226/
+第四步：
+
+重启php-rpm,再重启下nginx或是apache，这里就看到php_info页面有gd扩展了^_^
+
+下面配置php-fpm以服务形式启动
+cd /usr/src/php-5.6.25/  进入php原码编译目录
+cp ./sapi/fpm/init.d.php-fpm  /etc/init.d/php-fpm
+ll /etc/init.d/php-fpm
+chmod a+x /etc/init.d/php-fpm
+/etc/init.d/php-fpm stop 停止服务出现错误
+racefully shutting down php-fpm warning,no pid file found - php-fpm is not running ?
+
+关闭php-fpm服务时发现报错，缺乏pid文件，解决方法为编辑配置文件，启用pid文件
+vim php-fpm.conf
+pid = run/php-fpm.pid
+
+apache 安装依赖apr,apr-util pear
+wget http://mirrors.hust.edu.cn/apache//apr/apr-1.6.3.tar.gz
+wget http://mirrors.hust.edu.cn/apache//apr/apr-util-1.6.1.tar.gz
+解压安装到/usr/local/apr /usr/local/apr-util
+
+./configure --prefix=/usr/local/apache2 -enable-so -enable-rewrite --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util/
+
+----------------------------------------
+网络ip修改
+/etc/sysconfig/network-scripts/ifcfg-eth0 
+下面是/etc/sysconfig/network-scripts/ifcfg-eth0文件的示例：
+DEVICE=eth0
+IPADDR=192.168.0.2
+NETMASK=255.255.255.0
+BROADCAST=192.168.0.255
+NBOOT=yes
+BOOTPROTO=none
+GATEWAY＝192.168.0.1
+
+
+若希望手工修改网络地址或增加新的网络连接，可以通过修改对应的文件ifcfg-<interface-name>或创建新的文件来实现。
+DEVICE=<name>　　　<name>表示物理设备的名字
+IPADDR=<address>　　　<address>表示赋给该网卡的IP地址
+NETMASK=<mask>　　<mask>表示子网掩码
+BROADCAST=<address>　<address>表示广播地址
+NBOOT=yes/no　　启动时是否激活该卡
+BOOTPROTO=none  none：无须启动协议；bootp：使用bootp协议；dhcp：使用dhcp协议
+GATEWAY=<address> <address>表示默认网关
+MACADDR=<MAC-address> <MAC-address>表示指定一个MAC地址
+USERCTL=yes/no　　　　是否允许非root用户控制该设备
+修改后重新开启
+/etc/rc.d/init.d/networt restart
+
+/etc/sysconfig/network  说是全局设置，默认里面啥也没有
+/etc/hostname            用nmtui修改hostname后，主机名保存在这里
+/etc/resolv.conf        保存DNS设置，不需要手工改，nmtui里面设置的DNS会出现在这里
+/etc/sysconfig/network-scripts/            连接配置信息 ifcfg 文件
+/etc/NetworkManager/system-connections/    VPN、移动宽带、PPPoE连接
+--------------------------------------------------------------------------------------------------------------------------------------
+在Linux字符终端模式下，每次按Tab有歧义或者错误，或者vim中操作有误的时候，都会听到“嘀嘀”的蜂鸣声，这个声音源自主板的蜂鸣器，所以不能通过关闭音响来解决。
+
+Centos默认安装并加载了pcspkr内核模块，要关闭蜂鸣，可以删除pcspkr模块，用以下命令：
+
+#rmmod pcspkr
+
+重新打开它，用命令：
+
+#modprobe pcspkr
+
+如果想彻底关闭它，就在系统启动的时候不要开启此内核模块即可，命令如下：
+
+#echo "rmmod pcspkr" >>/etc/rc.d/rc.local
+
+如果只想针对某个特定的用户关闭此声音，则可以在其家目录下，执行如下操作：
+
+#echo “setterm -blength 0” >> ~/.bashrc
+
+如果是在GUI模式下，则执行如下操作：
+
+#echo “xset -b” >> ~/.bashrc
+---------------------------------------------------------------------------------------------------------------------------------------------
+linux图形界面开启与关闭
+ su root
+
+password
+
+1, 关闭图形界面：
+
+init 3 关闭图形界面（XServer服务也会关闭）
+
+
+2. 开启图形界面：
+
+init 5 或  startx
+
+
+3. 开机时，不进入 X Window：
+
+vi /etc/inittab
+
+id:5:initdefault:
+
+改成
+id:3:initdefault:
+----------------------------------------------------------------------------------------------------------------------------------------------------
+mysql 开启bin-log
+在mysqld底下添加
+log-bin=mysql-bin
+mysql 5.7必须添加
+server-id=
+----------------------------------------------------------------------------------------------------------
+windows 下删除五天前的文件
+@echo off
+set SrcDir=F:\maimaimai\data\order
+set DaysAgo=5
+forfiles /p %SrcDir% /s /m *.*/d -%DaysAgo% /c 
+//这个是一句合并的
+forfiles /p F:\maimaimai\data\order  /m *.* /d -10 /c "cmd /c del /f /q /a @path"
+----------------------------------------------------------------------------------------------------------------
+linux 间文件复制
+scp jinkou_wms.sql root@192.168.26.78:/opt
+-------------------------------------------------------------------------------------------
+mysql优化，开启查询记录
+set global general_log=on
+show variable like '%log%';查看下general_log_file文件
+
+
