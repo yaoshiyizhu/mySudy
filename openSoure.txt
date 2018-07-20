@@ -1251,3 +1251,93 @@ set global general_log=on
 show variable like '%log%';查看下general_log_file文件
 
 
+
+apache安装：
+yum -y instal gzip
+gzip -d httpd-2.4.34.tar.gz 
+tar -xvf httpd-2.4.34.tar
+yum -y install apr apr-util perl pcre gcc apxs expat-devel pcre-devel
+wget http://mirrors.shu.edu.cn/apache//apr/apr-1.6.3.tar.gz
+ tar -zxvf apr-1.6.3.tar.gz
+ cd apr-1.6.3
+ ./configure --prefix=/usr/local/apr
+make && make install
+wget http://mirrors.shu.edu.cn/apache//apr/apr-1.6.3.tar.gz
+tar -zxvf apr-util-1.6.1.tar.gz
+cd apr-util-1.6.1
+./configure --prefix=/usr/local/apr-util \
+--with-apr=/usr/local/apr
+make && make install
+cd httpd-2.4.34
+cd ../
+mkdir apache
+./configure --prefix=/opt/server/apache/ \
+ --with-apr=/usr/local/apr \
+ --with-apr-util=/usr/local/apr-util \
+ --enable-modules=all \
+ --enable-proxy \
+ --enable-proxy-connect \
+ --enable-rewrite
+cp /opt/server/apache/bin/apachectl /etc/rc.d/init.d/httpd
+2、打开编辑（vim，键盘输入字母"i"）"/etc/rc.d/init.d/httpd"文件，在 #!/bin/sh 下增加两行文字如下：
+
+　　# chkconfig: 35 70 30
+　　# description: Apache
+chkconfig --add httpd
+ 设置Apache的环境变量
+1、在"/etc/profile"文件最后添加export PATH=$PATH:/usr/local/apache/bin　（"="左右不要有空格）
+2、[root@admin ~]# source /etc/profile　（立即生效）
+cp　/usr/local/apache/bin/apachectl　/etc/rc.d/init.d/httpd
+3、测试重启：[root@admin ~]# service httpd restart
+
+
+php 安装：
+wget http://cn2.php.net/get/php-7.2.7.tar.gz/from/this/mirror
+mv mirror php-7.2.7.tar.gz
+tar -zxvf php-7.2.7.tar.zg
+yum install llixbxml2 ibxml2-devel openssl openssl-devel curl curl-devel libjpeg-devel libpng libpng-devel freetype-devel -y
+cd php-7.2.7
+./configure --prefix=/opt/server/php7 \
+--with-config-file-path=/opt/server/php7/etc \
+--with-apxs2=/opt/server/apache/bin/apxs \
+--with-mcrypt=/usr/include \
+--with-mysql=mysqlnd \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
+--with-gd \
+--with-iconv \
+--with-zlib \
+--enable-xml \
+--enable-bcmath \
+--enable-shmop \
+--enable-sysvsem \
+--enable-inline-optimization \
+--enable-mbregex \
+--enable-fpm \
+--enable-mbstring \
+--enable-ftp \
+--enable-gd-native-ttf \
+--with-openssl \
+--enable-pcntl \
+--enable-sockets \
+--with-xmlrpc \
+--enable-zip \
+--enable-soap \
+--without-pear \
+--with-gettext \
+--enable-session \
+--with-curl \
+--with-jpeg-dir \
+--with-freetype-dir
+make && make install
+cp php.ini-development /opt/server/php7/etc/php.ini
+cp php-fpm.conf.default php-fpm.conf
+
+php apache 配置
+useradd -s /sbin/nologin www
+
+user www
+group www
+DocumentRoot "/opt/www"
+Directory "/opt/wwww"
+LoadModule php7_module modules/libphp7.so
