@@ -1253,7 +1253,8 @@ show variable like '%log%';查看下general_log_file文件
 
 
 apache安装：
-yum -y instal gzip
+yum -y install gzip
+wget http://mirrors.hust.edu.cn/apache//httpd/httpd-2.4.34.tar.gz
 gzip -d httpd-2.4.34.tar.gz 
 tar -xvf httpd-2.4.34.tar
 yum -y install apr apr-util perl pcre gcc apxs expat-devel pcre-devel
@@ -1262,7 +1263,7 @@ wget http://mirrors.shu.edu.cn/apache//apr/apr-1.6.3.tar.gz
  cd apr-1.6.3
  ./configure --prefix=/usr/local/apr
 make && make install
-wget http://mirrors.shu.edu.cn/apache//apr/apr-1.6.3.tar.gz
+wget http://mirrors.shu.edu.cn/apache//apr/apr-util-1.6.1.tar.gz
 tar -zxvf apr-util-1.6.1.tar.gz
 cd apr-util-1.6.1
 ./configure --prefix=/usr/local/apr-util \
@@ -1285,17 +1286,17 @@ cp /opt/server/apache/bin/apachectl /etc/rc.d/init.d/httpd
 　　# description: Apache
 chkconfig --add httpd
  设置Apache的环境变量
-1、在"/etc/profile"文件最后添加export PATH=$PATH:/usr/local/apache/bin　（"="左右不要有空格）
+1、在"/etc/profile"文件最后添加export PATH=$PATH:/opt/server/apache/bin　（"="左右不要有空格）
 2、[root@admin ~]# source /etc/profile　（立即生效）
-cp　/usr/local/apache/bin/apachectl　/etc/rc.d/init.d/httpd
+cp　/opt/server/apache/bin/apachectl　/etc/rc.d/init.d/httpd
 3、测试重启：[root@admin ~]# service httpd restart
 
 
 php 安装：
-wget http://cn2.php.net/get/php-7.2.7.tar.gz/from/this/mirror
+wget -O php-7.2.7.tar.gz http://cn2.php.net/get/php-7.2.7.tar.gz/from/this/mirror
 mv mirror php-7.2.7.tar.gz
-tar -zxvf php-7.2.7.tar.zg
-yum install llixbxml2 ibxml2-devel openssl openssl-devel curl curl-devel libjpeg-devel libpng libpng-devel freetype-devel -y
+tar -zxvf php-7.2.7.tar.gz
+yum install llixbxml2 libxml2-devel openssl openssl-devel curl curl-devel libjpeg-devel libpng libpng-devel freetype-devel -y
 cd php-7.2.7
 ./configure --prefix=/opt/server/php7 \
 --with-config-file-path=/opt/server/php7/etc \
@@ -1341,3 +1342,73 @@ group www
 DocumentRoot "/opt/www"
 Directory "/opt/wwww"
 LoadModule php7_module modules/libphp7.so
+
+php5.6 安装
+wget -O php5.6.tar.gz http://hk1.php.net/get/php-5.6.37.tar.gz/from/this/mirror
+tar -zxvf php5.6.tar.gz 
+yum install llixbxml2 libxml2-devel openssl openssl-devel curl curl-devel libjpeg-devel libpng libpng-devel freetype-devel -y
+yum install -y epel-release
+yum install -y libmcrypt-devel
+./configure --prefix=/opt/server/php \
+--with-config-file-path=/opt/server/php/etc \
+--with-apxs2=/opt/server/apache/bin/apxs \
+--with-mcrypt=/usr/include \
+--with-mysql=mysqlnd \
+--with-mysqli=mysqlnd \
+--with-pdo-mysql=mysqlnd \
+--with-gd \
+--with-iconv \
+--with-zlib \
+--enable-xml \
+--enable-bcmath \
+--enable-shmop \
+--enable-sysvsem \
+--enable-inline-optimization \
+--enable-mbregex \
+--enable-fpm \
+--enable-mbstring \
+--enable-ftp \
+--enable-gd-native-ttf \
+--with-openssl \
+--enable-pcntl \
+--enable-sockets \
+--with-xmlrpc \
+--enable-zip \
+--enable-soap \
+--without-pear \
+--with-gettext \
+--enable-session \
+--with-curl \
+--with-jpeg-dir \
+--with-freetype-dir 
+
+LoadModule php5_module modules/libphp5.so
+mysql 安装
+alter user user() identified by "123456";
+修改mysql8的验证插件
+ALTER USER 'native'@'localhost' IDENTIFIED WITH mysql_native_password
+
+time wkhtmltopdf --no-collate --page-height 180 --page-width 100 -T 2 -L 2 -R 2 http://www.127.com/admin?c=default\&m=wcs\&a=makepdf\&number=AU180802134 test.pdf
+
+time wkhtmltopdf --no-collate --page-height 180 --page-width 100 -T 2 -L 2 -R 2 AU180802134.html test.pdf
+
+xhprof 安装
+yum install m4  yum install m4
+wget http://pecl.php.net/get/xhprof-0.9.4.tgz
+cd xhprof-0.9.4/extension
+/opt/server/php/bin/phpize
+./configure --with-php-config=/opt/server/php/bin/php-config 
+extension=xhprof.so
+
+拆分单词和字符
+ preg_split("/(?<!^)(?!$)/u",$string);
+
+<IfModule mpm_event_module>
+    ServerLimit         50
+    StartServers            10
+    MinSpareThreads         15
+    MaxSpareThreads        30
+    ThreadsPerChild         64
+    MaxRequestWorkers      2048
+    MaxConnectionsPerChild   80
+</IfModule>

@@ -1,0 +1,35 @@
+1、安装nginx
+下载工具: yum groupinstall -y 'Development Tools';
+官网下载源码包
+wget http://nginx.org/download/nginx-1.14.0.tar.gz
+./configue 
+make && make install
+
+2、安装php-fpm
+进入php官网下载php
+更改yum源 /etc/yum.repos.d/
+进入repoforge.org/use/下载对应的centos版本
+再 rpm -ivh 下载的rpm包
+yum claen all  yum list 
+
+netstat -tulnp
+
+安装mysql （安装php需要依赖）
+yum install -y mysql mysql-server mysql-devel
+
+依赖包
+yum install -y libxml2-devel libjpeg-devel libpng-devel freetype-devel openssl-devel libcurl-devel libmcrypt-devel
+
+./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --with-mysql=/usr/ --with-iconv-dir --with-freetype-dir --with-jpeg-dir --with-png-dir --with-zlib --with-libxml-dir=/usr/ --enable-xml --disable-rpath --enable-discard-path --enable-magic-quotes --enable-safe-mode --enable-bcmath --enable-shmop --enable-sysvsem --enable-inline-optimization --with-curl --with-curlwrappers --enable-mbregex --enable-fastcgi --enable-fpm --enable-force-cgi-redirect --enable-mbstring --with-mcrypt --enable-ftp --with-gd --enable-gd-native-ttf --with-openssl --with-mhash --enable-pcntl --enable-sockets --with-xmlrpc --enable-soap --without-pear --with-gettext --with-mime-magic
+
+make && make install
+
+修改配置文件名称
+cp /usr/local/php/etc/php-fpm.conf.default  /usr/local/php/etc/php-fpm.conf 
+
+把php配置文件放入etc下
+进入解压包目录，
+cp php.ini.production /usr/local/php/etc/php.ini 
+启动php-fpm
+./php-fpm
+修改nginx配置文件

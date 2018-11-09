@@ -1,0 +1,114 @@
+yum install wget
+设置阿里云源：
+wget -O /etc/yum.repo.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+安装java 
+yum install java
+安装zip工具
+yum instal zip unzip
+
+下载elasticsearch 6.2.4
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.zip
+下载 logstash 6.2.4
+wget https://artifacts.elastic.co/downloads/logstash/logstash-6.2.4.zip
+下载mysql-connector jdbc
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.11.zip
+把下载文件都放在/opt
+文件都解压到当前目录
+elasticsearch 运行
+
+elasticsearch 解压后进入目录
+添加一个账号，把改文件夹的权限给改账号
+切换到账号 
+./bin/elasticsearch
+
+logstash 运行
+进入解压目录
+bin/logstash -e ""
+
+然后命令行会变成等待输入状态，随便输入如：Hello World
+运行成功
+ 安装logstash-input-jdbc
+yum install gem
+替换ruby镜像库为国内的库，因为国外的库，国内是访问不到的，然后国内有两个库，两个库都是可以用的：
+1、替换成ruby-china的库
+gem sources -r https://rubygems.org/
+gem sources -a https://gems.taobao.org/
+进入logstash解压目录
+cd logstash-6.2.4
+编辑Gemfile source改成这样
+source "https://ruby.taobao.org"
+编辑Gemfile.lock GEM下的remote 改成taobao
+GEM
+  remote: https://ruby.taobao.org/
+安装logstash-input-jdbc插件
+
+进入logstash解压目录
+bin/logstash-plugin install logstash-input-jdbc
+
+在/opt/elastic/logstashMysqlConfig目录
+创建jdbc.conf,内容如下：
+input {
+    stdin {
+    }
+    jdbc {
+      # mysql jdbc connection string to our backup databse
+      jdbc_connection_string => "jdbc:mysql://127.0.0.1:3306/test"
+      # the user we wish to excute our statement as
+      jdbc_user => "root"
+      jdbc_password => "root"
+      # the path to our downloaded jdbc driver
+      jdbc_driver_library => "/opt/elastic/mysql-connector-java-8.0.11/mysql-connector-java-8.0.11.jar"
+      # the name of the driver class for mysql
+      jdbc_driver_class => "com.mysql.jdbc.Driver"
+        use_column_value => true
+        tracking_column =>last_modify_time
+        record_last_run =>true
+        last_run_metadata_path =>"/opt/elastic/logstashMysqlConfig/last.txt"
+      jdbc_paging_enabled => "true"
+      jdbc_page_size => "50000"
+      statement_filepath => "/opt/elastic/logstashMysqlConfig/jdbc.sql"
+      schedule => "* * * * *"
+      type => "jdbc"
+    }
+}
+
+filter {
+    json {
+        source => "message"
+        remove_field => ["message"]
+    }
+}
+
+output {
+    elasticsearch {
+        hosts => "127.0.0.1:9200"
+       # port => "9200"
+       # protocol => "http"
+        index => "mysql01"
+        document_id => "%{id}"
+       #cluster => "logstash-elasticsearch"
+    }
+    stdout {
+        codec => json_lines
+    }
+}
+
+创建jdbc.sql文件内容如下：
+select * from test
+
+把/opt/elastic/logstashMysqlConfig 的用户修改为创建的运行elastic的账号
+
+创建数据库test,表test，
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT '',
+  `last_modify_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8
+
+开启elastic
+运行logstatsh 
+bin/logstash -f /opt/elastic/logstashMysqlConfig/jdbc.conf
+
+bin/logstash -f /opt/elastic/logstashMysqlConfig/jdbc.conf -t 测试配置文件是否正确
+
