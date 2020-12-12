@@ -33,3 +33,4 @@ cp php.ini.production /usr/local/php/etc/php.ini
 启动php-fpm
 ./php-fpm
 修改nginx配置文件
+c
