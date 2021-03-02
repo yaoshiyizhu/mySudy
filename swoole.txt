@@ -1,0 +1,8 @@
+./configure --with-php-config=/www/server/php/72/bin/php-config
+
+
+多进程间程序通讯
+1：信号量，共享内存，队列
+ipcs -m 查看内存的信息
+ipcs -m -p 查看共享内存ID
+ipcrm -m shmid 删除共享内存

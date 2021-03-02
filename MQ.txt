@@ -1,0 +1,72 @@
+crtmqm -q QM1 创建队列管理器 QM1队列管理器名称
+strmqm QM1 启动队列管理器QM1
+
+dspmq 查看所有的队列管理器
+dltmqm qmname 删除队列管理器 qmname 队列管理器名称
+endmqm qmname 停止队列管理器 
+
+
+   display channel(SYSTEM.DEF.SVRCONN) all 
+   display channel(C) all 
+修改 ALTER CHL(SYSTEM.DEF.SVRCONN) CHLTYPE(SVRCONN) MCAUSER('MUSR_MQADMIN')
+          START CHL(SYSTEM.DEF.SVRCONN) 
+
+息通道，MQI通道和Cluster通道
+
+export  MQSERVER='SYSTEM.DEF.SVRCONN/tcp/RJHAM(1502)'
+
+runmqlsr -m QM1 -p 1414 -t tcp 开始监听队列
+endmqlsr -m qmgrname 停止监听队列
+
+
+DISPLAY CHLAUTH(*)
+
+测试本地队列样例
+crtmqm QM_APPlE 创建队列管理器
+strmqm QM_APPlE 开启队列管理器
+runmqsc QM_APPlE 进入队列管理器
+
+ALTER QMGR CHLAUTH(DISABLED)
+
+Password=123
+
+
+
+	def ql(test) replace
+	alter qmgr ccsid(1381)
+	def chl(SERVER2015) chltype(SVRCONN) trptype(tcp) mcauser('mqm') replace
+	def listener(TCP) trptype(tcp) port(1414)
+	start listener(TCP)
+    alter qmgr chlauth(disabled)
+	ALTER QMGR CHLAUTH(DISABLED)
+1.创建MQ队列管理器，使用mqm用户登录MQ所在机器
+mqm@localhos ~>$crtmqm Q2
+2.启动Qm1队列管理器
+mqm@localhos ~>$strmqm Q2
+3.进入Qm1命令行
+mqm@localhos ~>$runmqsc Q2
+4.定义一个本地队列Queue
+DEFINE QLOCAL ('Queue') DEFPSIST (YES) MAXDEPTH(100) REPLACE
+DEFINE QLOCAL ('QDEAD') DEFPSIST (YES) MAXDEPTH(100) REPLACE
+ALTER QMGR DEADQ('QDEAD')
+DEFINE CHANNEL('CHAN_SERVER_CON') CHLTYPE(SVRCONN) REPLACE
+DEFINE LISTENER('LISTENER.TCP') TRPTYPE(TCP) CONTROL(QMGR) PORT(1414) REPLACE
+START LISTENER('LISTENER.TCP')
+
+
+
+runmqlsr -t tcp -p 2424 -m Q2 &
+
+
+dspmqaut -m Q2 -n Queue -t queue -p chenyux
+setmqaut -m Q2 -t qmgr -p root  +connect
+setmqaut -m Q2 -t qmgr -p root  +all
+
+setmqaut -m Q2 -n Quue -t queue -p mqm +all
+
+setmqaut -m Q2 -t q -n Quue -p root +get
+setmqaut -m Q2 -t q -n Quue -p root +put
+setmqaut -m Queue -t q -n Quue -p root +all
+
+
+

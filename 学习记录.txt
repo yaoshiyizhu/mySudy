@@ -1,0 +1,105 @@
+vue init webpack-simple test
+
+vue list 查看
+
+npm -i file_loader url_loader 
+post-cess bandel 
+
+
+
+toddu应用开始
+npm init 初始化
+npm i vue webpack vue-loader
+npm i css-loader vue-template-compiler
+npm i url-loader file-loader
+创建 src 文件目录
+html-webpack-plugin
+要安装这个插件才能显示html
+
+
+webpack-server配置
+historyFallback 把浏览器不认识的路由识别
+
+生命周期方法
+computed
+
+
+npm i postcss-loader autoprefixer babel-loader babel-core
+
+npm i babel-preset-env babel-plugin-transform-vue-jsx
+
+
+设置session_set_cookie_params针对google浏览器有效，火狐无效
+
+
+session_save_path('C:/soft/PHPTutorial/tmp/tmp/oms');
+ini_set('session.gc_maxlifetime','60');
+ini_set('session.gc_probability',1);
+ini_set('session.gc_dividend',1);
+设置了session的保存路径，要设置下面这三个才能到期清理过期的sesssion
+
+if(!$_COOKIE[session_name()]){
+
+}else{
+    setcookie(session_name(),$_COOKIE[session_name()],time()+60,'/');
+}
+
+
+wsl安装的目录
+C:\Users\boyer\AppData\Local\Packages
+安装php
+add-apt-repository ppa:ondrej/php
+apt-get update
+apt-get install php7.2
+apt-get install php7.2-dev
+apt-get install php7.2-gd php7.2-soap php7.2-curl php7.2-json php7.2-mbstring
+
+
+
+apt-get install libpcre3 libpcre3-dev  libc6=2.19-0ubuntu6.15 libc-dev-bin gcc libc6-dev manpages-dev manpages
+apt-get install php7.2-dev
+apt-get install php-pear
+
+
+
+he following packages have unmet dependencies:
+ libpcre3-dev : Depends: libc6-dev but it is not going to be installed
+ manpages : Breaks: manpages-dev (< 4.13-3) but 3.54-1ubuntu1 is to be installed
+E: Unable to correct problems, you have held broken packages
+
+
+
+apt install gcc make openssl curl libbz2-1.0/now libbz2-dev libxml2-dev libpng12-dev libjpeg-dev libfreetype6-dev libfreetype6=2.5.2-1ubuntu2.8 \
+libzip-dev zlib1g-dev libicu-dev libjpeg8-dev libc6 libc6-dev
+
+python pwee 生成orm对象
+python -m pwiz -e mysql -H 132.232.48.179 -p3306 -utestuser -P qywms_test >Wmstest.py
+设置linux 物理内存没有使用完不使用交换内存
+sudo sysctl vm.swappiness=0
+
+
+安装ibmMq
+下载https://www-01.ibm.com/marketing/iwm/mrs/DirectDownload?source=ESD-WSMQ-EVAL&lang=en_US
+tar –xzvf IBM_MQ_9.0.0.0_LINUX_X86-64_TRIAL.tar.gz
+./mqlicense.sh 授权
+rpm -U MQSeriesRuntime-9.0.0-0.x86_64.rpm
+rpm -U MQSeriesSDK-9.0.0-0.x86_64.rpm
+rpm -U MQSeriesServer-9.0.0-0.x86_64.rpm
+rpm -U MQSeriesClient-9.0.0-0.x86_64.rpm
+安装 WebSphere MQ 样本程序:
+rpm -U MQSeriesSamples-9.0.0-0.x86_64.rpm
+修改创建的用户密码
+passwd mqm
+切换用户su mqm进入
+创建队列管理
+crtmqm -q QM1
+vi /var/mqm/.bash_profile 写入
+PATH=$PATH:/opt/mqm/samp/bin:/opt/mqm/bin:bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/X11R6/bin
+source /var/mqm/.bash_profile 导入命令
+strmqm QM1 开启队列
+查看版本
+dspmqver
+
+
+composer require xxxx --ignore-platform-reqs 忽略其他的版本检查
+
