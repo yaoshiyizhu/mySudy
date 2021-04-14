@@ -1,0 +1,52 @@
+require 'vendor/autoload.php';
+
+use Pheanstalk\Pheanstalk;
+
+//现在命令行输入  beanstalkd -l 127.0.0.1 -p 11300 & 开启
+
+$pheanstalk = new Pheanstalk('127.0.0.1',11300);
+
+//查看beanstalk的当前信息
+
+// 可以通过命令行对管道进行管理,本php类对管道的管理就是对beanstalkd命令行的封装
+
+print_r($pheanstalk->stats());
+
+// 当前的管道
+print_r($pheanstalk->listTubes());
+
+// 查看默认的管道
+print_r($pheanstalk->statsTube('default'));
+
+//在mytube 里面放入任务 one,使用默认的优先级,延迟重发时间,超时重发时间,
+$pheanstalk->useTube('mytube')->put('one');
+
+
+//从管道取出任务
+
+$job = $pheanstalk->watch('mytube')->reserve();
+//根据job的编号获取信息
+$job = $pheanstalk->peek(1);
+
+$pheanstalk->delete($job);//删除任务
+
+
+$pheanstalk->watch('mytube')->delete($job);
+//会把任务重新放入管道,并把任务设置为ready状态
+$pheanstalk->release($job);
+
+//把任务放在一边暂时不处理,条件成熟了在读取出来
+$pheanstalk->bury($job);
+
+$pheanstalk->peekBuried('mytube');// 获取处理bury状态的任务
+
+$pheanstalk->kickJob($job);//会把job转变成ready状态
+
+$pheanstalk->kick(200);//把job编号小于200的变成ready状态
+
+//--- 获取某个状态的任务
+$pheanstalk->peekDelayed();
+$pheanstalk->peekReady();
+$pheanstalk->peekBuried();
+
+$pheanstalk->pauseTube('mytube',10);//阻塞整个管道时间
